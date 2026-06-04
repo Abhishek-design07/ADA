@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+int v[10],mc=0;
+
+void main()
+{
+    int n,i,j,u,min,c[10][10],cnt=1;
+
+    printf("Prims Algorithm\n");
+    printf("Enter no of nodes:\n");
+    scanf("%d",&n);
+
+    printf("Enter cost matrix:\n");
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+        scanf("%d",&c[i][j]);
+
+    v[0]=1;
+
+    while(cnt<n)
+    {
+        min=99;
+
+        for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            if(c[i][j]<min && v[i] && !v[j])
+                min=c[i][j],u=j;
+
+        printf("%d edge cost=%d\n",cnt,min);
+        mc+=min;
+        v[u]=1;
+        cnt++;
+    }
+
+    printf("Minimum Cost=%d",mc);
+}
