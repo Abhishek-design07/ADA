@@ -1,0 +1,49 @@
+#include<stdio.h>
+
+int p[10],mc=0;
+
+int find(int i)
+{
+    while(p[i]) i=p[i];
+    return i;
+}
+
+void main()
+{
+    int i,j,n,u,v,a,b,min,c[10][10],cnt=1;
+
+    printf("Kruskal's Algorithm\n");
+    printf("Enter no of vertices:\n");
+    scanf("%d",&n);
+
+    printf("Enter cost matrix:\n");
+    for(i=0;i<n;i++)
+        for(j=0;j<n;j++)
+            scanf("%d",&c[i][j]);
+
+    while(cnt<n)
+    {
+        min=99;
+        for(i=0;i<n;i++)
+            for(j=0;j<n;j++)
+                if(c[i][j]<min)
+                {
+                    min=c[i][j];
+                    u=i; v=j;
+                }
+
+        a=find(u);
+        b=find(v);
+
+        if(a!=b)
+        {
+            p[b]=a;
+            printf("%d edge (%d,%d)=%d\n",cnt++,u,v,min);
+            mc+=min;
+        }
+
+        c[u][v]=c[v][u]=99;
+    }
+
+    printf("Minimum Cost=%d",mc);
+}
