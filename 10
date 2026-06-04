@@ -1,0 +1,26 @@
+#include<stdio.h> //10. Quick Sort 
+int part(int a[],int l,int h){ 
+    int i=l,j=h,p=a[l],t; 
+    while(i<j)  {                                            
+        while(a[i]<=p&&i<h) i++; 
+        while(a[j]>p) j--; 
+        if(i<j) { 
+            t=a[i]; 
+            a[i]=a[j]; 
+            a[j]=t; }   } 
+    t=a[l]; 
+    a[l]=a[j]; 
+    a[j]=t; 
+    return j;} 
+void qs(int a[],int l,int h){ 
+    int m; 
+    if(l<h) { 
+        m=part(a,l,h); 
+        qs(a,l,m-1); 
+        qs(a,m+1,h);  }} 
+void main(){ 
+    int a[20],n,i; 
+    printf("Quick Sort\n");                                                     qs(a,0,n-1); 
+    printf("Enter n:\n");                                                         printf("Sorted Elements:\n"); 
+    scanf("%d",&n);                                                                   for(i=0;i<n;i++) 
+    printf("Enter elements:\n");                                              printf("%d ",a[i]);   }
