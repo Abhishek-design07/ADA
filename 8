@@ -1,0 +1,27 @@
+#include<stdio.h> 
+int w[10],x[10],n,d,s=0,i; 
+void sos(int cs,int k,int r){ 
+    x[k]=1; 
+    if(cs+w[k]==d) { 
+        printf("Solution: "); 
+        for(i=0;i<=k;i++) 
+            if(x[i]) printf("%d ",w[i]); 
+        printf("\n"); } 
+    else if(cs+w[k]+w[k+1]<=d) 
+        sos(cs+w[k],k+1,r-w[k]); 
+    if(cs+r-w[k]>=d && cs+w[k+1]<=d)   
+ { 
+        x[k]=0; 
+        sos(cs,k+1,r-w[k]);   
+} 
+} 
+void main(){ 
+    printf("Sum of Subset\n"); 
+    printf("Enter n and d:\n"); 
+    scanf("%d%d",&n,&d); 
+    printf("Enter elements:\n"); 
+    for(i=0;i<n;i++)        
+scanf("%d",&w[i]),s+=w[i]; 
+    sos(0,0,s); 
+} 
+ 
