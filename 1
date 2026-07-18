@@ -11,7 +11,7 @@ void union_sets(int u, int v)
    parent[v] = u;  
  }  
  
-void main() 
+ int main() 
  {  
  int i, j, u, v, n, count = 1, min_cost = 0,cost[10][10]; 
  printf("\nKruskal's Algorithm\n");  
@@ -44,7 +44,7 @@ void main()
      min_cost += min;  
     }  
  
-3 
+
  
    cost[a][b] = cost[b][a] =99;  
  }  
